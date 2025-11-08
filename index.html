@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Shack Merch - Product Catalog</title>
+    <!-- Carga de Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración para usar la fuente Inter y un esquema de color personalizado --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-shack': '#EF4444', // Vibrant Red, "shack" color
+                        'secondary-shack': '#FDE047', // Yellow, complementary
+                        'dark-shack': '#1F2937', // Dark Gray
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base adjustments for full viewport height */
+        html, body {
+            height: 100%; 
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 1. Main body styles, removing background properties */
+        body {
+            min-height: 100vh; /* Ensures minimum content height */
+            color: #1F2937;
+            position: relative; /* Needed for z-index */
+            z-index: 0; /* Ensures content is above the background */
+        }
+        
+        /* 2. Fixed Background Implementation (Robust solution for mobile) */
+        body::before {
+            content: '';
+            position: fixed; /* Fixed relative to the viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/DvdfigA.png');
+            background-size: cover; /* Ensures the image covers the entire space */
+            background-repeat: no-repeat;
+            background-position: center center;
+            z-index: -1; /* Places it behind all page content */
+        }
+
+        /* Product cards will use a transparent background with an opacity layer. */
+        .product-card {
+            background-color: rgba(255, 255, 255, 0.4); /* White background with 40% opacity for transparency */
+            backdrop-filter: blur(2px); /* Adds a small blur to improve text readability */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -3px rgba(0, 0, 0, 0.2), 0 6px 10px -2px rgba(0, 0, 0, 0.1); /* More pronounced shadow on hover */
+        }
+        /* Adjust transparency of the welcome banner */
+        .welcome-banner {
+            /* Uses the main brand color with 60% opacity. */
+            background-color: rgba(239, 68, 68, 0.6); 
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Fixed Header --><header class="sticky top-0 z-10 bg-dark-shack text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold tracking-tight">
+                LITTLE SHACK <span class="text-primary-shack">CATALOG</span>
+            </h1>
+            <!-- Navigation Links --><nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#hats" class="hover:text-primary-shack transition duration-200">Hats</a>
+                <a href="#shirts" class="hover:text-primary-shack transition duration-200">Shirts</a>
+                <a href="#drinkware" class="hover:text-primary-shack transition duration-200">Drinkware</a>
+                <a href="#" class="text-white px-3 py-1 rounded-full bg-transparent">
+                    (Display Only)
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Store Container --><main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Welcome Banner --><div class="welcome-banner text-white rounded-xl p-8 mb-12 shadow-xl">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-2">Official Product Catalog!</h2>
+            <p class="text-xl opacity-90">Discover our exclusive collection of hats, shirts, and thermoses. For purchasing information, please contact our team.</p>
+        </div>
+        
+        <!-- HATS SECTION (3 Products) --><section id="gorras" class="mb-16">
+            <h2 class="text-4xl font-bold text-dark-shack border-b-4 border-secondary-shack pb-2 mb-8">Hats (Caps)</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Hat 1: Classic Logo --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/pg3E4fO.png" alt="Classic Little Shack Hat" class="w-full h-auto object-cover rounded-lg mb-4">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Classic Little Shack Hat</h3>
+                    <p class="text-gray-500 my-2 flex-grow">The iconic hat. 6-panel design with embroidered logo on the front.</p>
+                </div>
+                
+                <!-- Hat 2: Red Trucker --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/DHCRACW.png" alt="Red Little Shack Trucker Hat" class="w-full h-auto object-cover rounded-lg mb-4">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Little Shack Trucker Hat</h3>
+                    <p class="text-gray-500 my-2 flex-grow">Mesh style, red and white. Perfect for summer.</p>
+                </div>
+
+                <!-- Hat 3: Vintage Baseball --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/zkSRAgM.png" alt="Vintage Little Shack Baseball Cap" class="w-full h-auto object-cover rounded-lg mb-4">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Vintage "LS" Baseball Cap</h3>
+                    <p class="text-gray-500 my-2 flex-grow">Navy blue color with 'LS' initials embroidered. Leather adjustment strap.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SHIRTS SECTION (4 Products) --><section id="camisas" class="mb-16">
+            <h2 class="text-4xl font-bold text-dark-shack border-b-4 border-secondary-shack pb-2 mb-8">Shirts (Tees)</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Shirt 1: Logo Large White --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/mBoTpJo.jpeg" alt="Little Shack Logo Shirt (White)" class="w-full h-auto object-cover rounded-lg mb-4 border border-gray-100">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Little Shack Logo Shirt (White)</h3>
+                    <p class="text-gray-500 my-2 flex-grow">100% cotton, unisex fit. Large logo on the back.</p>
+                </div>
+                
+                <!-- Shirt 2: Chef Graphic (Black) --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/0kvO78B.jpeg" alt="Little Shack Logo Shirt (Black)" class="w-full h-auto object-cover rounded-lg mb-4">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Little Shack Logo Shirt (Black)</h3>
+                    <p class="text-gray-500 my-2 flex-grow">100% cotton, unisex fit. Large logo on the back.</p>
+                </div>
+
+                <!-- Shirt 3: Limited Edition (Yellow) --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/5Fseefx.png" alt="Little Shack Yellow Shirt" class="w-full h-auto object-cover rounded-lg mb-4">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Little Shack Shirt (Yellow)</h3>
+                    <p class="text-gray-500 my-2 flex-grow">100% cotton, unisex fit. Large logo on the back. Yellow color shirt.</p>
+                </div>
+                
+                <!-- Shirt 4: Employee Polo (Blue) --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/azGbmFv.png" alt="Little Shack Blue Shirt" class="w-full h-auto object-cover rounded-lg mb-4 border border-gray-100">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Little Shack Shirt (Blue)</h3>
+                    <p class="text-gray-500 my-2 flex-grow">100% cotton, unisex fit. Large logo on the back. Blue color shirt.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DRINKWARE SECTION (3 Products) --><section id="termos" class="mb-16">
+            <h2 class="text-4xl font-bold text-dark-shack border-b-4 border-secondary-shack pb-2 mb-8">Drinkware (Thermoses)</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Drinkware 1: Stainless Steel Tumbler --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/0muAMzn.png" alt="Little Shack Stainless Steel Tumbler" class="w-full h-auto object-cover rounded-lg mb-4">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Stainless Steel Tumbler</h3>
+                    <p class="text-gray-500 my-2 flex-grow">20oz capacity. Keeps your drink cold for 24h or hot for 8h.</p>
+                </div>
+                
+                <!-- Drinkware 2: Travel Tumbler with Handle --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/IsKgC0F.png" alt="Little Shack Travel Tumbler with Handle" class="w-full h-auto object-cover rounded-lg mb-4">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Travel Tumbler with Handle</h3>
+                    <p class="text-gray-500 my-2 flex-grow">Ergonomic design and spill-proof lid. Perfect for morning coffee.</p>
+                </div>
+
+                <!-- Drinkware 3: Sports Bottle --><div class="product-card p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/5k6GVhW.png" alt="Little Shack Sports Bottle" class="w-full h-auto object-cover rounded-lg mb-4">
+                    <h3 class="text-2xl font-semibold text-dark-shack">Little Shack Sports Bottle</h3>
+                    <p class="text-gray-500 my-2 flex-grow">30oz lightweight aluminum bottle with spout lid.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer --><footer class="bg-dark-shack text-white p-8 mt-12">
+        <div class="max-w-7xl mx-auto text-center text-sm">
+            <p>&copy; 2025 Little Shack. All rights reserved.</p>
+            <p>Made with 💛 for our fans.</p>
+        </div>
+    </footer>
+
+    <!-- Removed showMessage, hideMessage, and addToCart functions. --></body>
+</html>
